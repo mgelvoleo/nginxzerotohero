@@ -48,6 +48,78 @@ location / { ... } → Handles requests for the root URL (/), serving files or r
 
 ---
 
+# 🎁 Bonus: Setting Up a Custom Virtual Host
+You can create multiple websites on a single server using virtual hosts. Here’s how to configure one for www.virtual.host.
+
+📄 Step 1: Create a New Virtual Host Configuration
+Edit or create a new config file:
+
+```
+sudo vi /etc/nginx/sites-available/virtual.host.conf
+
+```
+
+Add the following content:
+
+```
+
+server {
+    listen       80;
+    server_name  www.virtual.host;
+
+    location / {
+        root   /var/www/virtual.host;
+        index  index.html index.htm;
+    }
+}
+
+
+```
+
+
+
+# 📁 Step 2: Create the Web Root Directory
+
+```
+sudo mkdir -p /var/www/virtual.host
+```
+
+You can now add your index.html or other static files in this directory.
+
+
+# Step 3: Enable the Virtual Host
+
+Create a symbolic link from sites-available to sites-enabled:
+
+```
+cd /etc/nginx/sites-enabled
+sudo ln -s /etc/nginx/sites-available/virtual.host.conf ./
+
+```
+
+# 🔄 Step 4: Reload NGINX to Apply Changes
+
+```
+sudo systemctl reload nginx
+```
+
+# 🧠 Bonus Tip:
+If you're testing locally, make sure to map www.virtual.host in your /etc/hosts file:
+
+
+```
+sudo vi /etc/hosts
+```
+
+Add this line:
+
+
+```
+127.0.0.1   www.virtual.host
+```
+
+---
+
 # ✅ Summary
 NGINX is highly efficient at serving static content like HTML, CSS, and JavaScript.
 
