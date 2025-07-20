@@ -51,7 +51,7 @@ location / { ... } → Handles requests for the root URL (/), serving files or r
 # 🎁 Bonus: Setting Up a Custom Virtual Host
 You can create multiple websites on a single server using virtual hosts. Here’s how to configure one for www.virtual.host.
 
-📄 Step 1: Create a New Virtual Host Configuration
+# 📄 Step 1: Create a New Virtual Host Configuration
 Edit or create a new config file:
 
 ```
