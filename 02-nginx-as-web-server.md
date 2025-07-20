@@ -44,3 +44,15 @@ root /var/www/html; → Directory where static files are served from
 index index.html; → Default file to serve when a directory is requested
 
 location / { ... } → Handles requests for the root URL (/), serving files or returning 404 if not found
+
+
+---
+
+# ✅ Summary
+NGINX is highly efficient at serving static content like HTML, CSS, and JavaScript.
+
+The root and index directives specify where to find files and which file to serve first.
+
+You can use Docker volumes to serve content without modifying the host system.
+
+Always reload NGINX (nginx -s reload or systemctl reload nginx) after updating configuration files to apply changes.
