@@ -14,10 +14,11 @@ Load balancing is the process of distributing incoming network requests across m
 
 📈 Scalability – Makes it easier to add or remove servers as demand changes.
 
+
 NGINX supports several load balancing algorithms right out of the box, including:
 
-Round Robin (default)
-
-Least Connections
-
-IP Hash
+| Algorithm         | Behavior                                                               |
+|-------------------|-------------------------------------------------------------------------|
+| `round-robin`     | Default — rotates through all backends equally                         |
+| `least_conn`      | Sends traffic to the backend with the fewest active connections         |
+| `ip_hash`         | Uses client IP to consistently route requests to the same backend       |
