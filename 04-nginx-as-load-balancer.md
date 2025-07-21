@@ -22,3 +22,35 @@ NGINX supports several load balancing algorithms right out of the box, including
 | `round-robin`     | Default — rotates through all backends equally                         |
 | `least_conn`      | Sends traffic to the backend with the fewest active connections         |
 | `ip_hash`         | Uses client IP to consistently route requests to the same backend       |
+
+
+---
+
+## 📝 Basic Load Balancer Configuration
+
+Edit:
+```bash
+sudo nano /etc/nginx/sites-available/default
+```
+
+Replace contents with:
+
+```nginx
+upstream backend_app {
+    server 127.0.0.1:3001;
+    server 127.0.0.1:3002;
+}
+
+server {
+    listen 80;
+    server_name localhost;
+
+    location / {
+        proxy_pass http://backend_app;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+}
+```
+
+---
